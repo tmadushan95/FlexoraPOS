@@ -1,11 +1,15 @@
+from typing import List
 from app.application.repositories.interfaces.iUserRepository import IUserRepository
 from app.application.services.interfaces.iUserService import IUserService
-from app.entities.user import User
+from app.models.user import User
 
 class UserService(IUserService):
     
     def __init__(self,repo:IUserRepository):
         self.repo = repo
 
-    async def get_user_by_id(self, id: int) -> User:
-        return await self.repo.get_user_by_id(id)
+    def get_all_users(self) -> List[User]:
+        return self.repo.get_all_users()
+
+    def get_user_by_id(self, id: int) -> User:
+        return self.repo.get_user_by_id(id)

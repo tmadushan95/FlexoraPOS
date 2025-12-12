@@ -1,8 +1,13 @@
 from abc import ABC,abstractmethod
-from app.entities.user import User
+from typing import List
+from app.models.user import User
 
 class IUserRepository(ABC):
 
     @abstractmethod
-    async def get_user_by_id(self,id:int)->User:
+    def get_user_by_id(self,id:int)->User:
+        pass
+
+    @abstractmethod
+    def get_all_users(self)->List[User]:
         pass
